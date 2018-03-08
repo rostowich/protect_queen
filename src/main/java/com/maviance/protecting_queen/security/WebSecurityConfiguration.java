@@ -24,11 +24,11 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @EnableWebSecurity
 public class WebSecurityConfiguration extends ResourceServerConfigurerAdapter {
 	
-	  @Autowired
+	  /*@Autowired
 	  private UserDetailsService userDetailsService;
 	 
 	  @Autowired
-	  private BCryptPasswordEncoder bCryptPasswordEncoder;
+	  private BCryptPasswordEncoder bCryptPasswordEncoder;*/
 	 
 	  @Override
 	  public void configure(HttpSecurity httpSecurity) throws Exception {
@@ -39,6 +39,8 @@ public class WebSecurityConfiguration extends ResourceServerConfigurerAdapter {
 	      .authorizeRequests()
 	        .antMatchers(HttpMethod.POST,"/signup").permitAll()
 	        .antMatchers(HttpMethod.POST,"/authenticate").permitAll()
+	        .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**", "/swagger-ui.html","/webjars/**").permitAll()
+	        .antMatchers("swagger-ui.html").permitAll()
 	        .anyRequest().authenticated();
 	        
 	  }
