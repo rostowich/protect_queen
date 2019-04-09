@@ -37,5 +37,10 @@ pipeline{
 	    sh "docker build -t rostowich/protect_queen -f ./Dockerfile_jenkins ."
 	}
         }
+	stage("Docker push to the registry")	{
+	    steps	{
+	    sh	"docker	push rostowich/protect_queen"
+	}
+}
     }
 }
