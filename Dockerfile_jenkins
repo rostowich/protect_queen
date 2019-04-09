@@ -1,0 +1,4 @@
+#Install Java 8 to start the application
+FROM openjdk:8-jre-alpine
+COPY target/protect_queen-0.0.1-SNAPSHOT.jar  protect_queen.jar
+ENTRYPOINT ["java", "-jar", "protect_queen.jar"]

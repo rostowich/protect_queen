@@ -27,5 +27,15 @@ pipeline{
             
             }
         }
+	stage("Package the application")	{
+            steps	{
+            sh "./mvnw clean package -DskipTests"
+            }
+        }
+	stage("Docker build")	{
+            steps	{
+	    sh "docker build -t rostowich/protect_queen -f ./Dockerfile_jenkins ."
+	}
+        }
     }
 }
