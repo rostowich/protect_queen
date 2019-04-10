@@ -41,6 +41,11 @@ pipeline{
 	    steps	{
 	    sh	"docker	push rostowich/protect_queen"
 	}
-}
+	}
+	stage("Deploy to the staging")	{
+	    steps	{
+	    sh	"docker	run -d	--rm -p	8765:8080 --name protect_queen	rostowich/protect_queen"
+	}
+	}
     }
 }
